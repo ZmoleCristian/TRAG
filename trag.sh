@@ -6,8 +6,8 @@
 
 ### OPTIONS AND VARIABLES ###
 
-dotfilesrepo="https://github.com/ZmoleCristian/dotfiles.git"
-progsfile="https://raw.githubusercontent.com/ZmoleCristian/TRAG/master/progs.csv"
+dotfilesrepo="https://github.com/ZakkyPatronu/TRAG.git"
+progsfile="https://raw.githubusercontent.com/ZakkyPatronu/TRAG/master/progs.csv"
 vimrepo="https://github.com/tragdate/soyvim"
 aurhelper="yay"
 repobranch="master"
@@ -28,7 +28,7 @@ error() {
 
 welcomemsg() {
 	whiptail --title "Welcome!" \
-		--msgbox "Stai JOS!\\n\\nSe ocupa frateletau TragDate\\n\\n-In Bani Gata" 10 60
+		--msgbox "Stai JOS!\\n\\nSe ocupa fratele tau TragDate\\n\\n-In Bani Gata" 10 60
 
 	whiptail --title "Bro!" --yes-button "Merge" \
 		--no-button "Return..." \
