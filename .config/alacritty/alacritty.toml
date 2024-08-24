@@ -1,4 +1,4 @@
-import = ["/home/zakky/.config/alacritty/themes/themes/vapor.toml"]
+import = ["/home/$USER/.config/alacritty/themes/themes/vapor.toml"]
 
 [bell]
 animation = "EaseOutCirc"
