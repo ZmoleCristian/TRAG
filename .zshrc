@@ -48,8 +48,7 @@ setopt PROMPT_SUBST
 prompt_top="%F{white}%K{blue} 󱞬 %f%k"
 prompt_bottom="%F{white}%K{blue} 󱞪 %f%k"
 prompt_host="%F{white}%K{blue}  % archlinux "
-#prompt_user="%F{white}%K{blue}🥷 Andrei Veneticu-Cercel%f%k"
-prompt_user="%F{white}%K{blue}  Zakky %f%k"
+prompt_user="%F{white}%K{blue}  $USER %f%k"
 prompt_dir='$(echo "%K{blue} "  ${(%):-%  ~} | sed "s#/#  #g") '
 transition_bluewhite="%F{blue}%K{white}%f%k"
 transition_whiteblue="%F{white}%K{blue}%f%k"
