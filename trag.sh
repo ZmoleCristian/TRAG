@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # TragDate's Rice Auto Generator (TRAG)
-# by TragDate <chiarel@tragdate.ninja>
+# Made By <chiarel@tragdate.ninja>
 # License: BSD 3-Clause
 
 ### OPTIONS AND VARIABLES ###
@@ -39,28 +39,28 @@ getuserandpass() {
 	# Prompts user for new username and password.
 	name=$(whiptail --inputbox "Numele contului pe care se instaleaza TRAG." 10 60 3>&1 1>&2 2>&3 3>&1) || exit 1
 	while ! echo "$name" | grep -q "^[a-z_][a-z0-9_-]*$"; do
-		name=$(whiptail --nocancel --inputbox "Username not valid. Give a username beginning with a letter, with only lowercase letters, - or _." 10 60 3>&1 1>&2 2>&3 3>&1)
+		name=$(whiptail --nocancel --inputbox "Username-ul nu este valid. Scrie un username care incepe cu o litera, doar cu litere mici, - or _." 10 60 3>&1 1>&2 2>&3 3>&1)
 	done
-	pass1=$(whiptail --nocancel --passwordbox "Enter a password for that user." 10 60 3>&1 1>&2 2>&3 3>&1)
-	pass2=$(whiptail --nocancel --passwordbox "Retype password." 10 60 3>&1 1>&2 2>&3 3>&1)
+	pass1=$(whiptail --nocancel --passwordbox "Introdu o parola pentru user." 10 60 3>&1 1>&2 2>&3 3>&1)
+	pass2=$(whiptail --nocancel --passwordbox "Rescrie parola." 10 60 3>&1 1>&2 2>&3 3>&1)
 	while ! [ "$pass1" = "$pass2" ]; do
 		unset pass2
-		pass1=$(whiptail --nocancel --passwordbox "Passwords do not match.\\n\\nEnter password again." 10 60 3>&1 1>&2 2>&3 3>&1)
-		pass2=$(whiptail --nocancel --passwordbox "Retype password." 10 60 3>&1 1>&2 2>&3 3>&1)
+		pass1=$(whiptail --nocancel --passwordbox "Parolele nu se potrivesc.\\n\\nScrie parola din nou." 10 60 3>&1 1>&2 2>&3 3>&1)
+		pass2=$(whiptail --nocancel --passwordbox "Rescrie parola." 10 60 3>&1 1>&2 2>&3 3>&1)
 	done
 }
 
 usercheck() {
 	! { id -u "$name" >/dev/null 2>&1; } ||
-		whiptail --title "WARNING" --yes-button "CONTINUE" \
+		whiptail --title "ALERTA" --yes-button "CONTINUA" \
 			--no-button "No wait..." \
-			--yesno "The user \`$name\` already exists on this system. TRAG can install for a user already existing, but it will OVERWRITE any conflicting settings/dotfiles on the user account.\\n\\nTRAG will NOT overwrite your user files, documents, videos, etc., so don't worry about that, but only click <CONTINUE> if you don't mind your settings being overwritten.\\n\\nNote also that TRAG will change $name's password to the one you just gave." 14 70
+			--yesno "User-ul \`$name\` deja exista in system. TRAG poate instala pentru un user care exista deja,  dar va rescrie orice se afla in conflict settings/dotfiles in user.\\n\\nTRAG nu o sa rescrie fisere, documente, video-uri, etc., deci nu te ingrijora, doar apasa <CONTINUA> daca nu te intereseaza ca setarile tale vor fi rescrise.\\n\\n Tine cont ca TRAG o sa schimbe $name's parola la cea pe care ai introdus-o." 14 70
 }
 
 preinstallmsg() {
-	whiptail --title "Let's get this party started!" --yes-button "Let's go!" \
+	whiptail --title "SA INCEAPA BUBIALA!" --yes-button "Let's go!" \
 		--no-button "No, nevermind!" \
-		--yesno "The rest of the installation will now be totally automated, so you can sit back and relax.\\n\\nIt will take some time, but when done, you can relax even more with your complete system.\\n\\nNow just press <Let's go!> and the system will begin installation!" 13 60 || {
+		--yesno "Restul instalarii de acum in colo va fi complet automat, deci te poti relaxa deocamdata.\\n\\nIt o sa dureze ceva, dar cand e gata, te poti relaxa si mai mult cu noul tau sistem.\\n\\nAcum apasa <Haide!> si TRAG va incepe instalarea!" 13 60 || {
 		clear
 		exit 1
 	}
