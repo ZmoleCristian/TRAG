@@ -2,6 +2,7 @@ TragDate's Rice
 Dependecies : Minimal Arch Installation
 
 TragDate is using blackarch repos so here is what you need to do to enable them too :
+
 [YOU NEED MULTILIB ENABLED FOR THIS!!!]
 
 1. Run this command `curl -O https://blackarch.org/strap.sh`
