@@ -16,7 +16,7 @@ function git_indicator() {
     echo "$indicator"
 }
 
-temp=""
+temp="28.1 "
 # Calculate prompt exectime
 function preexec() {
     timer=${timer:-$SECONDS}
@@ -48,8 +48,8 @@ setopt PROMPT_SUBST
 prompt_top="%F{white}%K{blue} 󱞬 %f%k"
 prompt_bottom="%F{white}%K{blue} 󱞪 %f%k"
 prompt_host="%F{white}%K{blue}  % archlinux "
-prompt_user="%F{white}%K{blue}  $USER %f%k"
-prompt_dir='$(echo "%K{blue} "  ${(%):-%  ~} | sed "s#/#  #g") '
+prompt_user="%F{white}%K{blue}  Zakky %f%k"
+prompt_dir='$(echo "%K{blue} "  ${(%):- %~} | sed "s#/#  #g") '
 transition_bluewhite="%F{blue}%K{white}%f%k"
 transition_whiteblue="%F{white}%K{blue}%f%k"
 transition_whitecyan="%F{white}%K{cyan}%f%k"
@@ -65,12 +65,36 @@ prompt_char="%F{white} %f"
 PROMPT=${prompt_top}${prompt_host}${transition_bluewhite}${transition_whiteblue}${prompt_dir}${transition_bluewhite}${transition_whitecyan}'%K{cyan}%F{black}${vcs_info_msg_0_}${psvar[1]}${transition_cyanred}${prompt_returncode}${prompt_exectime}${transition_yellowblue}${prompt_temp}
 '${prompt_bottom}${prompt_user}${transition_bluewhite}${transition_whiteblack}${prompt_char}
 
+# Load syntax highlighting; should be last.
+source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
+
 alias ls='lsd'
 alias l='ls -l'
 alias la='ls -a'
 alias lla='ls -la'
 alias lt='ls --tree'
 
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc"
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutenvrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutenvrc"
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/zshnameddirrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/zshnameddirrc"
 
+# These common commands are just too long! Abbreviate them.
+alias \
+	ka="killall" \
+	g="git" \
+	trem="transmission-remote" \
+	YT="youtube-viewer" \
+	sdn="shutdown -h now" \
+	e="$EDITOR" \
+	v="$EDITOR" \
+	p="pacman" \
+	xi="sudo xbps-install" \
+	xr="sudo xbps-remove -R" \
+	xq="xbps-query" \
+	z="zathura"
 
-
+alias \
+	lf="lfub" \
+	magit="nvim -c MagitOnly" \
+	ref="shortcuts >/dev/null; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc ; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutenvrc ; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/zshnameddirrc"
